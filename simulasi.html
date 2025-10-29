@@ -29,11 +29,11 @@
 </div>
 
 <div class="wrapper " style="margin: 0 auto; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding-top: 140px;">
-  <div id="formContent" style="max-width: 800px;">
+  <div id="formContent" style="max-width: 800px; width: 90%;">
     
-	<div class="d-flex justify-content-between mb-3">
-		<span id="user-info" style="font-weight: 600; color: #333;"></span>
-		<span id="question-counter" style="font-weight: 600; color: #333;"></span>
+	<div class="d-flex justify-content-between mb-3" style="flex-wrap: wrap;">
+		<span id="user-info" style="font-weight: 600; color: #333; margin-bottom: 5px;"></span>
+		<span id="question-counter" style="font-weight: 600; color: #333; margin-bottom: 5px;"></span>
 	</div>
 	
 	<div id="quiz-container">
@@ -54,7 +54,7 @@
 </div>
 
 <div  style="position:absolute;top:0px;left:0px;right:0px;bottom:0px;background:#fff;opacity:0.5;z-index:99999;display:none" id="loader">
-<img class="loader" src="https://pusmendik.kemdikbud.go.id/tka/_assets/images/loader2.gif">
+<img class="loader" src="https://pusmendik.kemdikbud.go.id/tka/_assets/images/loader2.gif" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 </div>
 
 <style>
@@ -88,12 +88,22 @@
 	  width: 100%;
 	  min-height: 100vh;
 	  padding: 20px;
+	  padding-bottom: 80px; /* beri ruang untuk footer */
 	  margin: 0 auto;
 	  text-align: center;
 	}
-	.logo-container {
-		display: flex;
-		align-items: center;
+	#formContent {
+	  -webkit-border-radius: 20px;
+	  border-radius: 20px;
+	  background: #ffffff;
+	  padding: 45px;
+	  width: 90%;
+	  max-width: 800px; /* Lebarkan untuk soal */
+	  position: relative;
+	  -webkit-box-shadow: 0 15px 35px 0 rgba(50, 102, 152, 0.1);
+	  box-shadow: 0 15px 35px 0 rgba(50, 102, 152, 0.1);
+	  text-align: center;
+	  border: 1px solid rgba(255,255,255,0.8);
 	}
 	.header-text h3 {
 		margin: 0;
@@ -102,86 +112,6 @@
 	.header-text p {
 		margin: 0;
 		font-weight: 400;
-	}
-	#formContent {
-	  -webkit-border-radius: 20px;
-	  border-radius: 20px;
-	  background: #ffffff;
-	  padding: 45px;
-	  width: 90%;
-	  max-width: 480px;
-	  position: relative;
-	  -webkit-box-shadow: 0 15px 35px 0 rgba(50, 102, 152, 0.1);
-	  box-shadow: 0 15px 35px 0 rgba(50, 102, 152, 0.1);
-	  text-align: center;
-	  border: 1px solid rgba(255,255,255,0.8);
-	}
-	.header-icon .icon-circle {
-		width: 80px;
-		height: 80px;
-		border-radius: 50%;
-		background: linear-gradient(135deg, #326698 0%, #4a7fb8 100%);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin: 0 auto;
-		box-shadow: 0 10px 30px rgba(50, 102, 152, 0.2);
-		border: 2px solid rgba(50, 102, 152, 0.1);
-	}
-	.header-icon .icon-circle i {
-		font-size: 35px;
-		color: white;
-	}
-	.form-label {
-		color: #333;
-		font-weight: 600;
-		margin-bottom: 10px;
-		font-size: 14px;
-		display: flex;
-		align-items: center;
-	}
-	.form-label i {
-		color: #326698;
-		margin-right: 8px;
-		font-size: 16px;
-	}
-	.custom-select {
-		border: 2px solid #e8ecf1;
-		border-radius: 12px;
-		padding: 14px 18px;
-		font-size: 15px;
-		font-weight: 500;
-		transition: all 0.3s ease;
-		background-color: #fff;
-		background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23326698" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
-		background-repeat: no-repeat;
-		background-position: right 15px center;
-		background-size: 12px;
-		appearance: none;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		cursor: pointer;
-		box-shadow: 0 2px 8px rgba(50, 102, 152, 0.08);
-		height:auto;
-	}
-	.custom-select:focus {
-		border-color: #326698;
-		box-shadow: 0 0 0 3px rgba(50, 102, 152, 0.1), 0 4px 16px rgba(50, 102, 152, 0.15);
-		outline: none;
-		transform: translateY(-1px);
-	}
-	.custom-select:hover {
-		border-color: #4a7fb8;
-		box-shadow: 0 4px 12px rgba(50, 102, 152, 0.12);
-	}
-	.custom-select option {
-		padding: 12px;
-		font-weight: 500;
-		color: #333;
-		background-color: #fff;
-	}
-	.custom-select option:hover {
-		background-color: #f8f9fa;
 	}
 	.custom-btn {
 		background: linear-gradient(135deg, #326698 0%, #4a7fb8 100%);
@@ -216,57 +146,10 @@
 	.custom-btn:active {
 		transform: translateY(0);
 	}
-	.form-group {
-		margin-bottom: 30px;
-		position: relative;
-	}
-	.form-group:last-of-type {
-		margin-bottom: 20px;
-	}
-	.footer-info {
-		position: fixed;
-		bottom: 15px;
-		left: 0;
-		right: 0;
-		z-index: 10;
-	}
-	.copyright-card {
-		background: rgba(255, 255, 255, 0.95);
-		padding: 10px 20px;
-		border-radius: 25px;
-		font-size: 12px;
-		color: #333;
-		box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-		border: 1px solid rgba(255,255,255,0.5);
-		display: inline-flex;
-		align-items: center;
-		margin: 0 auto;
-	}
-	.copyright-card i {
-		color: #326698;
-	}
 	@media (max-width: 768px) {
 		#formContent {
 			margin: 20px;
-			padding: 35px 25px;
-		}
-		
-		.header-icon .icon-circle {
-			width: 60px;
-			height: 60px;
-		}
-		
-		.header-icon .icon-circle i {
-			font-size: 25px;
-		}
-		
-		.footer-info {
-			bottom: 10px;
-		}
-		
-		.copyright-card {
-			font-size: 10px;
-			padding: 8px 15px;
+			padding: 25px;
 		}
 		.container-fluid {
 			height: 100px !important;
@@ -277,16 +160,6 @@
 		.header-text p {
 			font-size: 12px !important;
 		}
-		.logo-container img {
-			height: 45px !important;
-		}
-		.custom-select {
-			padding: 12px 16px;
-			font-size: 14px;
-		}
-		.form-label {
-			font-size: 13px;
-		}
 		.custom-btn {
 			padding: 14px 25px;
 			font-size: 15px;
@@ -294,147 +167,6 @@
 	}
 	#loader {
 		background: rgba(50, 102, 152, 0.1);
-	}
-	h2.inactive {
-	  color: #cccccc;
-	}
-	h2.active {
-	  color: #0d0d0d;
-	  border-bottom: 2px solid #5fbae9;
-	}
-	input[type=text] {
-	  border: none;
-	  color: #0d0d0d;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-	  border-radius:0px;
-	  border-bottom:2px solid #eee;
-	}
-	input[type=password] {
-	  border: none;
-	  color: #0d0d0d;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-	  border-radius:0px;
-	  border-bottom:2px solid #eee;
-	}
-	.fadeInDown {
-	  -webkit-animation-name: fadeInDown;
-	  animation-name: fadeInDown;
-	  -webkit-animation-duration: 1s;
-	  animation-duration: 1s;
-	  -webkit-animation-fill-mode: both;
-	  animation-fill-mode: both;
-	}
-	@keyframes floating {
-		0%, 100% { transform: translateY(0px); }
-		50% { transform: translateY(-10px); }
-	}
-	.header-icon .icon-circle {
-		animation: floating 3s ease-in-out infinite;
-	}
-	@-webkit-keyframes fadeInDown {
-	  0% {
-		opacity: 0;
-		-webkit-transform: translate3d(0, -100%, 0);
-		transform: translate3d(0, -100%, 0);
-	  }
-	  100% {
-		opacity: 1;
-		-webkit-transform: none;
-		transform: none;
-	  }
-	}
-	@keyframes fadeInDown {
-	  0% {
-		opacity: 0;
-		-webkit-transform: translate3d(0, -100%, 0);
-		transform: translate3d(0, -100%, 0);
-	  }
-	  100% {
-		opacity: 1;
-		-webkit-transform: none;
-		transform: none;
-	  }
-	}
-	@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-	@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-	@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-	.fadeIn {
-	  opacity:0;
-	  -webkit-animation:fadeIn ease-in 1;
-	  -moz-animation:fadeIn ease-in 1;
-	  animation:fadeIn ease-in 1;
-
-	  -webkit-animation-fill-mode:forwards;
-	  -moz-animation-fill-mode:forwards;
-	  animation-fill-mode:forwards;
-
-	  -webkit-animation-duration:1s;
-	  -moz-animation-duration:1s;
-	  animation-duration:1s;
-	}
-	.fadeIn.first {
-	  -webkit-animation-delay: 0.4s;
-	  -moz-animation-delay: 0.4s;
-	  animation-delay: 0.4s;
-	}
-	.fadeIn.second {
-	  -webkit-animation-delay: 0.6s;
-	  -moz-animation-delay: 0.6s;
-	  animation-delay: 0.6s;
-	}
-	.fadeIn.third {
-	  -webkit-animation-delay: 0.8s;
-	  -moz-animation-delay: 0.8s;
-	  animation-delay: 0.8s;
-	}
-	.fadeIn.fourth {
-	  -webkit-animation-delay: 1s;
-	  -moz-animation-delay: 1s;
-	  animation-delay: 1s;
-	}
-	.underlineHover:after {
-	  display: block;
-	  left: 0;
-	  bottom: -10px;
-	  width: 0;
-	  height: 2px;
-	  background-color: #56baed;
-	  content: "";
-	  transition: width 0.2s;
-	}
-	.underlineHover:hover {
-	  color: #0d0d0d;
-	}
-	.underlineHover:hover:after{
-	  width: 100%;
-	}
-	.error-input {
-		border-color: #dc3545 !important;
-		box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
-		animation: shake 0.5s ease-in-out;
-	}
-	@keyframes shake {
-		0%, 100% { transform: translateX(0); }
-		25% { transform: translateX(-5px); }
-		75% { transform: translateX(5px); }
-	}
-	.custom-notification {
-		backdrop-filter: blur(10px);
-	}
-	.custom-notification:hover {
-		transform: translateX(-5px) !important;
-	}
-	@media (max-width: 768px) {
-		.custom-notification {
-			right: 10px !important;
-			left: 10px !important;
-			max-width: none !important;
-			top: 130px !important;
-		}
 	}
 	
 	/* CSS Khusus untuk Opsi Jawaban */
@@ -447,6 +179,7 @@
 		margin-bottom: 10px;
 		cursor: pointer;
 		transition: all 0.2s ease;
+		color: #333;
 	}
 	.option-label:hover {
 		background: #e9ecef;
@@ -458,7 +191,7 @@
 		font-weight: 600;
 	}
 	.option-input {
-		display: none;
+		display: none; /* Sembunyikan radio button asli */
 	}
 	.option-letter {
 		display: inline-block;
@@ -481,12 +214,12 @@
 
 <script>
 	// ⬇️ GANTI DENGAN URL APPS SCRIPT BARU ANDA DARI LANGKAH 2 ⬇️
-	var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwXpq1gt4fMHMnNAXnRpUQd2N3f1ZBASQ78zC08GqYUVwgbw_U0Voo9SUwVZXa3DGl0EQ/exec";
+	var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxp6l5b2K4rhTaRuIF52pshXm5D53OocZBhEj5Wzde78sOOHMtOu1uWrQrI6M3v-QOVhA/exec";
 
 	var userData, mapelData;
 	var allQuestions = [];
 	var currentQuestionIndex = 0;
-	var userAnswers = [];
+	var userAnswers = []; // Array untuk menyimpan jawaban (misal: ['A', 'C', null, 'B'])
 
 	$(document).ready(function() {
 		// 1. Verifikasi Login dan Mapel
@@ -517,7 +250,8 @@
 			success: function(result) {
 				if (result && result.length > 0) {
 					allQuestions = result;
-					userAnswers = new Array(allQuestions.length).fill(null); // Siapkan array jawaban
+					// Siapkan array jawaban (null = belum dijawab)
+					userAnswers = new Array(allQuestions.length).fill(null); 
 					displayQuestion(currentQuestionIndex);
 					$('#loader').fadeOut();
 				} else {
@@ -549,7 +283,7 @@
 		});
 		
 		$('#submit-btn').on('click', function() {
-			saveAnswer();
+			saveAnswer(); // Simpan jawaban terakhir
 			if (confirm('Apakah Anda yakin ingin menyelesaikan ujian ini?')) {
 				finishExam();
 			}
@@ -609,7 +343,7 @@
 	function finishExam() {
 		$('#loader').fadeIn();
 		
-		// Hitung skor
+		// 1. Hitung skor
 		var score = 0;
 		for (var i = 0; i < allQuestions.length; i++) {
 			if (userAnswers[i] === allQuestions[i].kunci) {
@@ -622,7 +356,42 @@
 		var correctAnswers = score;
 		var wrongAnswers = totalQuestions - score;
 		
-		// Tampilkan hasil
+		// 2. Siapkan data untuk dikirim ke Google Sheet
+		var postData = {
+			namaSiswa: userData.nama,
+			mapel: mapelData.nama,
+			skor: finalScore.toFixed(0),
+			benar: correctAnswers,
+			salah: wrongAnswers,
+			total: totalQuestions,
+			jawaban: userAnswers // Kirim sebagai array
+		};
+		
+		// 3. Kirim data (POST) ke Apps Script
+		$.ajax({
+			type: "POST",
+			url: SCRIPT_URL, // URL yang sama dengan GET
+			data: JSON.stringify(postData),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(response) {
+				// 4. Tampilkan hasil (setelah berhasil menyimpan)
+				$('#loader').fadeOut();
+				displayResults(finalScore, totalQuestions, correctAnswers, wrongAnswers);
+				sessionStorage.clear(); // Hapus sesi setelah semua selesai
+			},
+			error: function(xhr, status, error) {
+				// Jika gagal simpan, tetap tampilkan hasil tapi beri peringatan
+				$('#loader').fadeOut();
+				alert("Peringatan: Gagal menyimpan hasil Anda ke server. Harap lapor ke pengawas.\nSkor Anda akan tetap ditampilkan.");
+				displayResults(finalScore, totalQuestions, correctAnswers, wrongAnswers);
+				sessionStorage.clear();
+			}
+		});
+	}
+	
+	// Fungsi baru untuk menampilkan halaman hasil
+	function displayResults(finalScore, totalQuestions, correctAnswers, wrongAnswers) {
 		$('#formContent').html(`
 			<div class="fadeIn text-center">
 			  <div class="header-icon mb-4">
@@ -648,9 +417,6 @@
 			  </div>
 			</div>
 		`);
-		
-		$('#loader').fadeOut();
-		sessionStorage.clear(); // Hapus semua sesi
 	}
 
 </script>
