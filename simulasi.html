@@ -8,8 +8,35 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #326698 0%, #4a7fb8 100%);
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+    }
+    .option-label {
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .option-label:hover {
+      background-color: #e3f2fd;
+    }
+    .option-label.selected {
+      background-color: #cfe2ff;
+      border-color: #0d6efd !important;
+    }
+    #loader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,0.8);
+      z-index: 2000;
+      display: none;
+    }
+  </style>
 </head>
-<body style="background: linear-gradient(135deg, #326698 0%, #4a7fb8 100%); font-family: 'Poppins', sans-serif;">
+
+<body>
 
 <!-- HEADER -->
 <div class="container-fluid text-white shadow-lg"
@@ -26,14 +53,14 @@
 <!-- KONTEN -->
 <div class="wrapper" style="margin: 0 auto; display:flex; justify-content:center; align-items:center; min-height:100vh; padding-top:140px;">
   <div id="formContent" style="max-width:800px; width:90%;">
-    
+
     <div class="d-flex justify-content-between mb-3">
-      <span id="user-info" style="font-weight:600; color:#333;"></span>
-      <span id="question-counter" style="font-weight:600; color:#333;"></span>
+      <span id="user-info" style="font-weight:600; color:#fff;"></span>
+      <span id="question-counter" style="font-weight:600; color:#fff;"></span>
     </div>
-    
+
     <div id="quiz-container">
-      <div id="question-text" class="mb-3" style="font-size:1.1rem; font-weight:500; color:#000;"></div>
+      <div id="question-text" class="mb-3 text-white" style="font-size:1.1rem; font-weight:500;"></div>
       <div id="options-container"></div>
     </div>
 
@@ -46,13 +73,13 @@
 </div>
 
 <!-- LOADER -->
-<div id="loader" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.7);z-index:2000;display:none">
+<div id="loader">
   <img src="https://pusmendik.kemdikbud.go.id/tka/_assets/images/loader2.gif"
        style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
 </div>
 
 <script>
-// ⚙️ GANTI DENGAN URL WEB APP KAMU SENDIRI
+// ✅ GANTI DENGAN URL WEB APP PUNYAMU (sudah terhubung dengan kode Apps Script final)
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbya5PHRXvH6OXuKMBBUarGSvPpqfW5dUa_ueIML8wnkr-LRebjEOsA-11nvzBBB5FqmEQ/exec";
 
 let userData, mapelData, allQuestions = [], currentQuestionIndex = 0, userAnswers = [];
@@ -67,11 +94,11 @@ $(document).ready(function() {
     return;
   }
 
-  $('#user-info').text('Siswa: ' + userData.nama);
-  $('#mapel-header').text('Mapel: ' + mapelData.nama);
+  $('#user-info').text('👤 ' + userData.nama);
+  $('#mapel-header').text('Mata Pelajaran: ' + mapelData.nama);
   $('#loader').fadeIn();
 
-  // 🔹 Ambil soal dari Apps Script
+  // 🔹 Ambil soal dari Apps Script (GET -> getSoal)
   $.getJSON(SCRIPT_URL, { action: "getSoal", mapel: mapelData.id })
     .done(function(result) {
       if (result && result.length > 0) {
@@ -84,7 +111,7 @@ $(document).ready(function() {
       $('#loader').fadeOut();
     })
     .fail(function() {
-      alert("Gagal memuat soal. Pastikan koneksi internet aktif.");
+      alert("⚠️ Gagal memuat soal. Pastikan koneksi internet aktif.");
       $('#loader').fadeOut();
     });
 
@@ -115,10 +142,10 @@ function displayQuestion(index) {
   $('#question-text').html((index + 1) + ". " + q.pertanyaan);
 
   let html = '';
-  html += createOption('A', q.opsi_a);
-  html += createOption('B', q.opsi_b);
-  html += createOption('C', q.opsi_c);
-  html += createOption('D', q.opsi_d);
+  html += createOption('a', q.opsi_a);
+  html += createOption('b', q.opsi_b);
+  html += createOption('c', q.opsi_c);
+  html += createOption('d', q.opsi_d);
   $('#options-container').html(html);
 
   if (userAnswers[index]) {
@@ -138,9 +165,9 @@ function displayQuestion(index) {
 
 function createOption(letter, text) {
   return `
-    <label class="option-label d-block border rounded p-2 mb-2">
+    <label class="option-label d-block border rounded p-2 mb-2 bg-white text-dark">
       <input type="radio" class="option-input" name="option" id="option-${letter}" value="${letter}">
-      <strong>${letter}.</strong> ${text}
+      <strong class="mr-2 text-primary">${letter.toUpperCase()}.</strong> ${text}
     </label>`;
 }
 
@@ -151,23 +178,24 @@ function saveAnswer() {
 
 function finishExam() {
   $('#loader').fadeIn();
-  let score = 0;
-  allQuestions.forEach((q, i) => { if (userAnswers[i] === q.kunci) score++; });
+  let benar = 0;
+  allQuestions.forEach((q, i) => { if (userAnswers[i] === q.kunci) benar++; });
 
   const total = allQuestions.length;
-  const finalScore = (score / total) * 100;
+  const salah = total - benar;
+  const skor = Math.round((benar / total) * 100);
 
   const postData = {
     namaSiswa: userData.nama,
     mapel: mapelData.nama,
-    skor: finalScore.toFixed(0),
-    benar: score,
-    salah: total - score,
-    total: total,
+    skor,
+    benar,
+    salah,
+    total,
     jawaban: userAnswers
   };
 
-  // 🔹 Kirim data ke Google Sheet
+  // 🔹 Kirim hasil ke Google Sheet via doPost
   $.ajax({
     type: "POST",
     url: SCRIPT_URL,
@@ -176,26 +204,26 @@ function finishExam() {
     dataType: "json",
     success: function() {
       $('#loader').fadeOut();
-      showResults(finalScore, total, score, total - score);
+      showResults(skor, total, benar, salah);
       sessionStorage.clear();
     },
     error: function() {
       $('#loader').fadeOut();
       alert("⚠️ Gagal menyimpan hasil ke server. Silakan lapor ke pengawas.");
-      showResults(finalScore, total, score, total - score);
+      showResults(skor, total, benar, salah);
       sessionStorage.clear();
     }
   });
 }
 
-function showResults(finalScore, total, benar, salah) {
+function showResults(skor, total, benar, salah) {
   $('#formContent').html(`
-    <div class="text-center">
-      <h3 class="text-success mb-3"><i class="fas fa-check-circle"></i> Ujian Selesai</h3>
-      <h4>Skor Akhir: ${finalScore.toFixed(0)}</h4>
+    <div class="text-center text-white">
+      <h3 class="mb-3"><i class="fas fa-check-circle text-success"></i> Ujian Selesai</h3>
+      <h4>Skor Akhir: <strong>${skor}</strong></h4>
       <p>Total Soal: ${total}</p>
       <p>Benar: ${benar} | Salah: ${salah}</p>
-      <button class="btn btn-primary mt-3" onclick="window.location.href='index.html'">
+      <button class="btn btn-light mt-3" onclick="window.location.href='index.html'">
         <i class="fas fa-home mr-2"></i>Kembali ke Halaman Utama
       </button>
     </div>
