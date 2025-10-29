@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ayo Coba TKA | Pilih Mata Pelajaran</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="https://pusmendik.kemdikbud.go.id/tka/fav/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://pusmendik.kemdikbud.go.id/tka/fav/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://pusmendik.kemdikbud.go.id/tka/fav/favicon-16x16.png">
+	<link rel="manifest" href="https://pusmendik.kemdikbud.go.id/tka/fav/site.webmanifest">
+	<link rel="mask-icon" href="https://pusmendik.kemdikbud.go.id/tka/fav/safari-pinned-tab.svg">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://pusmendik.kemdikbud.go.id/tka/_assets/css/fontello/css/fontello.css" type="text/css" media="all" />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</head>
+<body style="background: linear-gradient(135deg, #326698 0%, #4a7fb8 100%, #667eea 100%); font-family: 'Poppins', sans-serif;">
+
+<div class="bg-pattern"></div>
+
+<div class="container-fluid text-white" 
+	style="background: linear-gradient(135deg, #326698 0%, #4a7fb8 100%); box-shadow: 0 4px 20px rgba(0,0,0,0.1); height:120px; position:fixed; top:0px; left:0px; right:0px; z-index:1000;"
+	>
+	  <div class="row h-100 align-items-center">
+		<div class="col-12">
+			<div class="d-flex align-items-center justify-content-center">
+				<div class="logo-container mr-4">
+					<img style="height:60px; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.2));" src=" ">
+				</div>
+				<div class="header-text">
+					<h3 class="mb-1" style="font-weight: 700; font-size: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">SMPN 10 BANAWA SELATAN</h3>
+					<p class="mb-0" style="font-size: 14px; opacity: 0.9; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">TRY OUT</p>
+				</div>
+			</div>
+		</div>
+	  </div>
+</div>
+
+<div class="wrapper " style="margin: 0 auto; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding-top: 140px;">
+  <div id="formContent">
+    <div class="fadeIn text-center">
+      <div class="header-icon mb-4">
+        <div class="icon-circle">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h4 class="mt-3 mb-1" style="color: #333; font-weight: 600;">Simulasi TKA</h4>
+        <p class="text-muted" style="font-size: 14px;">Pilih jenjang dan mata pelajaran untuk memulai simulasi</p>
+      </div>
+      
+      <form action="" method="post" id="formData">
+	  
+	  <div class="form-group text-left">
+		<label class="form-label"><i class="fas fa-layer-group mr-2"></i><b>Jenjang Pendidikan:</b></label>
+		<select name="jenjang" id="jenjang" class="form-control custom-select">					
+			<option value="smp"><i class="fas fa-school"></i> SMP</option>			
+		</select>
+	  </div>
+	  
+	  <div class="form-group text-left">
+		<label class="form-label"><i class="fas fa-book mr-2"></i><b>Jenis Mata Pelajaran:</b></label>
+		<select name="jenis_mapel" id="jenis_mapel" class="form-control custom-select">
+			<option value="1">Mata Pelajaran Wajib</option>		
+			<option value="2">Mata Pelajaran Pilihan</option>		
+		</select>
+	  </div>
+	  <div class="form-group text-left">
+		<label class="form-label"><i class="fas fa-book mr-2"></i><b>Mata Pelajaran:</b></label>
+		<select name="mapel" id="mapel" class="form-control custom-select">
+			<option value="">Pilih mata pelajaran...</option>
+		</select>
+	  </div>
+	  
+	  <div class="text-center mt-4">
+		<button type="button" class="btn btn-primary btn-lg btn-block custom-btn" onClick="selectData()">
+		  <i class="fas fa-play mr-2"></i>Mulai Simulasi
+		</button>
+	  </div>
+	  </form>
+    </div>
+	 
+  </div> 
+</div>
+
+
+<div class="footer-info">
+  <div class="container">
+    <div class="text-center">
+      <div class="copyright-card">
+		<span>Copyright © 2025 SMPN 10 BANAWA SELATAN. All rights reserved.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="position:fixed;bottom:10px;left:0px;right:0px;text-align:center;font-size:11px;display:none">Total Pengunjung : 0, Hits : 0</div>
+<div  style="position:absolute;top:0px;left:0px;right:0px;bottom:0px;background:#fff;opacity:0.5;z-index:99999;display:none" id="loader">
+<img class="loader" src="https://pusmendik.kemdikbud.go.id/tka/_assets/images/loader2.gif">
+</div>
+
+<style>
+	/* Background Pattern */
+	.bg-pattern {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: 
+			radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 2px, transparent 2px),
+			radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08) 2px, transparent 2px),
+			radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 1px, transparent 1px);
+		background-size: 50px 50px, 80px 80px, 30px 30px;
+		z-index: -1;
+	}
+
+	/* STRUCTURE */
+	.loader {
+	  margin: 0;
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  -ms-transform: translate(-50%, -50%);
+	  transform: translate(-50%, -50%);
+	}
+
+	.wrapper {
+	  display: flex;
+	  align-items: center;
+	  flex-direction: column; 
+	  justify-content: center;
+	  width: 100%;
+	  min-height: 100vh;
+	  padding: 20px;
+	  margin: 0 auto;
+	  text-align: center;
+	}
+
+	/* Header Styling */
+	.logo-container {
+		display: flex;
+		align-items: center;
+	}
+
+	.header-text h3 {
+		margin: 0;
+		letter-spacing: 1px;
+	}
+
+	.header-text p {
+		margin: 0;
+		font-weight: 400;
+	}
+
+	#formContent {
+	  -webkit-border-radius: 20px;
+	  border-radius: 20px;
+	  background: #ffffff;
+	  padding: 45px;
+	  width: 90%;
+	  max-width: 480px;
+	  position: relative;
+	  -webkit-box-shadow: 0 15px 35px 0 rgba(50, 102, 152, 0.1);
+	  box-shadow: 0 15px 35px 0 rgba(50, 102, 152, 0.1);
+	  text-align: center;
+	  border: 1px solid rgba(255,255,255,0.8);
+	}
+
+	/* Header Icon */
+	.header-icon .icon-circle {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		background: linear-gradient(135deg, #326698 0%, #4a7fb8 100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto;
+		box-shadow: 0 10px 30px rgba(50, 102, 152, 0.2);
+		border: 2px solid rgba(50, 102, 152, 0.1);
+	}
+
+	.header-icon .icon-circle i {
+		font-size: 35px;
+		color: white;
+	}
+
+	/* Form Styling */
+	.form-label {
+		color: #333;
+		font-weight: 600;
+		margin-bottom: 10px;
+		font-size: 14px;
+		display: flex;
+		align-items: center;
+	}
+
+	.form-label i {
+		color: #326698;
+		margin-right: 8px;
+		font-size: 16px;
+	}
+
+	.custom-select {
+		border: 2px solid #e8ecf1;
+		border-radius: 12px;
+		padding: 14px 18px;
+		font-size: 15px;
+		font-weight: 500;
+		transition: all 0.3s ease;
+		background-color: #fff;
+		background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23326698" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+		background-repeat: no-repeat;
+		background-position: right 15px center;
+		background-size: 12px;
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		cursor: pointer;
+		box-shadow: 0 2px 8px rgba(50, 102, 152, 0.08);
+		height:auto;
+	}
+
+	.custom-select:focus {
+		border-color: #326698;
+		box-shadow: 0 0 0 3px rgba(50, 102, 152, 0.1), 0 4px 16px rgba(50, 102, 152, 0.15);
+		outline: none;
+		transform: translateY(-1px);
+	}
+
+	.custom-select:hover {
+		border-color: #4a7fb8;
+		box-shadow: 0 4px 12px rgba(50, 102, 152, 0.12);
+	}
+
+	.custom-select option {
+		padding: 12px;
+		font-weight: 500;
+		color: #333;
+		background-color: #fff;
+	}
+
+	.custom-select option:hover {
+		background-color: #f8f9fa;
+	}
+
+	.custom-btn {
+		background: linear-gradient(135deg, #326698 0%, #4a7fb8 100%);
+		border: none;
+		border-radius: 12px;
+		padding: 16px 30px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: all 0.3s ease;
+		box-shadow: 0 6px 20px rgba(50, 102, 152, 0.25);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.custom-btn::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+		transition: left 0.5s;
+	}
+
+	.custom-btn:hover::before {
+		left: 100%;
+	}
+
+	.custom-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 25px rgba(50, 102, 152, 0.35);
+		background: linear-gradient(135deg, #4a7fb8 0%, #326698 100%);
+	}
+
+	.custom-btn:active {
+		transform: translateY(0);
+	}
+
+	/* Form Groups */
+	.form-group {
+		margin-bottom: 30px;
+		position: relative;
+	}
+
+	.form-group:last-of-type {
+		margin-bottom: 20px;
+	}
+
+	/* Footer Info */
+	.footer-info {
+		position: fixed;
+		bottom: 15px;
+		left: 0;
+		right: 0;
+		z-index: 10;
+	}
+
+	.copyright-card {
+		background: rgba(255, 255, 255, 0.95);
+		padding: 10px 20px;
+		border-radius: 25px;
+		font-size: 12px;
+		color: #333;
+		box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+		border: 1px solid rgba(255,255,255,0.5);
+		display: inline-flex;
+		align-items: center;
+		margin: 0 auto;
+	}
+
+	.copyright-card i {
+		color: #326698;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 768px) {
+		#formContent {
+			margin: 20px;
+			padding: 35px 25px;
+		}
+		
+		.header-icon .icon-circle {
+			width: 60px;
+			height: 60px;
+		}
+		
+		.header-icon .icon-circle i {
+			font-size: 25px;
+		}
+		
+		.footer-info {
+			bottom: 10px;
+		}
+		
+		.copyright-card {
+			font-size: 10px;
+			padding: 8px 15px;
+		}
+
+		.container-fluid {
+			height: 100px !important;
+		}
+
+		.header-text h3 {
+			font-size: 20px !important;
+		}
+
+		.header-text p {
+			font-size: 12px !important;
+		}
+
+		.logo-container img {
+			height: 45px !important;
+		}
+
+		.custom-select {
+			padding: 12px 16px;
+			font-size: 14px;
+		}
+
+		.form-label {
+			font-size: 13px;
+		}
+
+		.custom-btn {
+			padding: 14px 25px;
+			font-size: 15px;
+		}
+	}
+
+	/* Loading Animation */
+	#loader {
+		background: rgba(50, 102, 152, 0.1);
+	}
+
+	/* TABS */
+
+	h2.inactive {
+	  color: #cccccc;
+	}
+
+	h2.active {
+	  color: #0d0d0d;
+	  border-bottom: 2px solid #5fbae9;
+	}
+	
+	input[type=text] {
+	  border: none;
+	  color: #0d0d0d;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  border-radius:0px;
+	  border-bottom:2px solid #eee;
+	}
+	input[type=password] {
+	  border: none;
+	  color: #0d0d0d;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  border-radius:0px;
+	  border-bottom:2px solid #eee;
+	}
+
+	/* ANIMATIONS */
+
+	/* Simple CSS3 Fade-in-down Animation */
+	.fadeInDown {
+	  -webkit-animation-name: fadeInDown;
+	  animation-name: fadeInDown;
+	  -webkit-animation-duration: 1s;
+	  animation-duration: 1s;
+	  -webkit-animation-fill-mode: both;
+	  animation-fill-mode: both;
+	}
+
+	/* Floating Animation for Icon */
+	@keyframes floating {
+		0%, 100% { transform: translateY(0px); }
+		50% { transform: translateY(-10px); }
+	}
+
+	.header-icon .icon-circle {
+		animation: floating 3s ease-in-out infinite;
+	}
+
+	/* Pulse Animation - Removed for cleaner look */
+
+	@-webkit-keyframes fadeInDown {
+	  0% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -100%, 0);
+		transform: translate3d(0, -100%, 0);
+	  }
+	  100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	  }
+	}
+
+	@keyframes fadeInDown {
+	  0% {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -100%, 0);
+		transform: translate3d(0, -100%, 0);
+	  }
+	  100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	  }
+	}
+
+	/* Simple CSS3 Fade-in Animation */
+	@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+	@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+	@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+	.fadeIn {
+	  opacity:0;
+	  -webkit-animation:fadeIn ease-in 1;
+	  -moz-animation:fadeIn ease-in 1;
+	  animation:fadeIn ease-in 1;
+
+	  -webkit-animation-fill-mode:forwards;
+	  -moz-animation-fill-mode:forwards;
+	  animation-fill-mode:forwards;
+
+	  -webkit-animation-duration:1s;
+	  -moz-animation-duration:1s;
+	  animation-duration:1s;
+	}
+
+	.fadeIn.first {
+	  -webkit-animation-delay: 0.4s;
+	  -moz-animation-delay: 0.4s;
+	  animation-delay: 0.4s;
+	}
+
+	.fadeIn.second {
+	  -webkit-animation-delay: 0.6s;
+	  -moz-animation-delay: 0.6s;
+	  animation-delay: 0.6s;
+	}
+
+	.fadeIn.third {
+	  -webkit-animation-delay: 0.8s;
+	  -moz-animation-delay: 0.8s;
+	  animation-delay: 0.8s;
+	}
+
+	.fadeIn.fourth {
+	  -webkit-animation-delay: 1s;
+	  -moz-animation-delay: 1s;
+	  animation-delay: 1s;
+	}
+
+	/* Simple CSS3 Fade-in Animation */
+	.underlineHover:after {
+	  display: block;
+	  left: 0;
+	  bottom: -10px;
+	  width: 0;
+	  height: 2px;
+	  background-color: #56baed;
+	  content: "";
+	  transition: width 0.2s;
+	}
+
+	.underlineHover:hover {
+	  color: #0d0d0d;
+	}
+
+	.underlineHover:hover:after{
+	  width: 100%;
+	}
+
+	/* Modern Notification Styles */
+	.error-input {
+		border-color: #dc3545 !important;
+		box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+		animation: shake 0.5s ease-in-out;
+	}
+
+	@keyframes shake {
+		0%, 100% { transform: translateX(0); }
+		25% { transform: translateX(-5px); }
+		75% { transform: translateX(5px); }
+	}
+
+	/* Custom Notification Styles */
+	.custom-notification {
+		backdrop-filter: blur(10px);
+	}
+
+	.custom-notification:hover {
+		transform: translateX(-5px) !important;
+	}
+
+	@media (max-width: 768px) {
+		.custom-notification {
+			right: 10px !important;
+			left: 10px !important;
+			max-width: none !important;
+			top: 130px !important;
+		}
+	}
+</style>
+
+<script type="text/javascript" src="https://pusmendik.kemdikbud.go.id/tka/_assets/js/jquery/jquery.min.js"></script>
+
+<script>
+	
+	$('.btn_active').trigger('click');
+	
+	// *** FUNGSI YANG DIMODIFIKASI ***
+	// Fungsi untuk mengubah daftar mata pelajaran berdasarkan jenjang
+	function loadMapelByJenjang(jenjang) {
+		$.ajax({
+			type: "GET", // Ganti ke GET
+			dataType: "json", // Ganti ke json
+			data: { 
+				action: "getMapel", // Parameter baru untuk Apps Script
+				jenjang: jenjang,
+				// Kita tidak lagi menggunakan 'jenis_mapel' di sini,
+				// kecuali Anda menambahkannya di Apps Script
+			},
+			// ⬇️ GANTI URL INI ⬇️
+			url: "URL_WEB_APP_ANDA_DARI_BAGIAN_3", // Tempel URL Web App Anda di sini
+			cache: false,
+			beforeSend: function() {
+				$('#mapel').html('<option value="">Loading...</option>');
+				$('#mapel').prop('disabled', true);
+			},
+			success: function(result) { // 'result' sekarang sudah JSON
+				var options = '';
+				if (result && result.length > 0) {
+					$.each(result, function(index, item) {
+						options += '<option value="' + item.id + '">' + item.mapel + '</option>';
+					});
+					showNotification('Mata pelajaran berhasil dimuat!', 'success');
+				} else {
+					options = '<option value="">Tidak ada mata pelajaran tersedia</option>';
+					showNotification('Tidak ada mata pelajaran tersedia untuk jenjang ini.', 'warning');
+				}
+				$('#mapel').html(options);
+				$('#mapel').prop('disabled', false);
+			},
+			error: function() {
+				$('#mapel').html('<option value="">Error loading mata pelajaran</option>');
+				$('#mapel').prop('disabled', false);
+				showNotification('Gagal memuat mata pelajaran. Silakan coba lagi.', 'error');
+			}
+		});
+	}
+	
+	// Event handler untuk perubahan jenjang
+	$('#jenjang').on('change', function() {
+		var selectedJenjang = $(this).val();
+		loadMapelByJenjang(selectedJenjang);
+	});
+
+	// Event handler untuk perubahan jenis mata pelajaran
+	$('#jenis_mapel').on('change', function() {
+		var selectedJenjang = $('#jenjang').val();
+		loadMapelByJenjang(selectedJenjang);
+	});
+	
+	// Load mata pelajaran saat halaman pertama kali dimuat
+	$(document).ready(function() {
+		var initialJenjang = $('#jenjang').val();
+		loadMapelByJenjang(initialJenjang);
+	});
+	
+	// *** FUNGSI YANG DIMODIFIKASI ***
+	function selectData(){
+		var jenjang = $('#jenjang').val();
+		var mapel = $('#mapel').val(); // Ini akan berisi ID dari sheet Mapel, misal 'smp_mtk'
+
+		// Validasi mata pelajaran
+		if (!mapel || mapel === '') {
+			showNotification('Silakan pilih mata pelajaran terlebih dahulu!', 'error');
+			$('#mapel').focus().addClass('error-input');
+			setTimeout(() => {
+				$('#mapel').removeClass('error-input');
+			}, 3000);
+			return false;
+		}
+
+		$.ajax({ 
+		   type: "GET", // Ganti ke GET
+		   dataType: "json", // Kita harapkan JSON
+		   data : {
+			   action: "getSoal", // Parameter baru
+			   mapel: mapel,
+			   jenjang: jenjang 
+		   },
+		   // ⬇️ GANTI URL INI ⬇️
+		   url: "https://script.google.com/macros/s/AKfycbywTQyTglydEChHf3q8P82vSBXDqRjou7JmhXqyrVXGWrZY814Ou_Tz4ouZfHUEDhsiHw/exec", // Tempel URL Web App Anda di sini
+		   cache: false, 
+		   beforeSend: function(){
+			   // Tombol Anda tidak punya ID 'btnSubmit', pakai class '.custom-btn'
+			   $('.custom-btn').html('Processing ... !').prop('disabled',true);
+			   $('#loader').fadeIn();
+			},
+			success: function(result_json){
+				// 'result_json' sekarang adalah array berisi soal-soal
+				if (result_json && result_json.length > 0) {
+					
+					// Simpan soal ke penyimpanan browser (sessionStorage)
+					sessionStorage.setItem('soal_tryout', JSON.stringify(result_json));
+					
+					showNotification('Berhasil memuat soal! Mengarahkan...', 'success');
+					
+					// Arahkan ke halaman simulasi baru
+					// ⚠️ ANDA HARUS MEMBUAT FILE 'simulasi.html' INI SENDIRI
+					setTimeout(() => {
+						window.location = 'simulasi.html'; 
+					}, 1000);
+
+				} else {
+					$('#loader').fadeOut();
+					showNotification('Soal tidak ditemukan untuk mata pelajaran ini.', 'warning');
+					$('.custom-btn').html('<i class="fas fa-play mr-2"></i>Mulai Simulasi').prop('disabled', false);
+				}
+		   },
+		   error: function() {
+				$('#loader').fadeOut();
+				$('.custom-btn').html('<i class="fas fa-play mr-2"></i>Mulai Simulasi').prop('disabled', false);
+				showNotification('Terjadi kesalahan koneksi ke server soal.', 'error');
+		   }
+		});
+	}
+	
+	// Fungsi untuk menampilkan notifikasi modern
+	function showNotification(message, type = 'info') {
+		// Remove existing notifications
+		$('.custom-notification').remove();
+		
+		const iconClass = type === 'error' ? 'fa-exclamation-circle' : 
+						 type === 'success' ? 'fa-check-circle' : 
+						 type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+		
+		const bgColor = type === 'error' ? '#dc3545' : 
+					   type === 'success' ? '#28a745' : 
+					   type === 'warning' ? '#ffc107' : '#007bff';
+		
+		const notification = $(`
+			<div class="custom-notification" style="
+				position: fixed;
+				top: 140px;
+				right: 20px;
+				background: ${bgColor};
+				color: white;
+				padding: 15px 20px;
+				border-radius: 10px;
+				box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+				z-index: 10001;
+				display: flex;
+				align-items: center;
+				max-width: 400px;
+				opacity: 0;
+				transform: translateX(100%);
+				transition: all 0.3s ease;
+				font-family: 'Poppins', sans-serif;
+			">
+				<i class="fas ${iconClass} mr-3" style="font-size: 18px;"></i>
+				<span style="font-weight: 500;">${message}</span>
+				<button onclick="$(this).closest('.custom-notification').fadeOut(300)" style="
+					background: none;
+					border: none;
+					color: white;
+					margin-left: 15px;
+					cursor: pointer;
+					font-size: 16px;
+					opacity: 0.8;
+				">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+		`);
+		
+		$('body').append(notification);
+		
+		// Animate in
+		setTimeout(() => {
+			notification.css({
+				'opacity': '1',
+				'transform': 'translateX(0)'
+			});
+		}, 100);
+		
+		// Auto hide after 5 seconds
+		setTimeout(() => {
+			notification.fadeOut(300, function() {
+				$(this).remove();
+			});
+		}, 5000);
+	}
+	
+</script>
+  
+
+</body>
+</html>
