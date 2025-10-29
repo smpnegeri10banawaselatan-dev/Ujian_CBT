@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Ayo Coba TKA | Pilih Mata Pelajaran</title>
+  <title>Ayo Coba TKA | Pilih Mata Pelajaran</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -67,7 +67,7 @@
 	  </div>
 	  
 	  <div class="text-center mt-4">
-		<button typeB="button" class="btn btn-primary btn-lg btn-block custom-btn" onClick="selectData()">
+		<button type="button" class="btn btn-primary btn-lg btn-block custom-btn" onClick="selectData()">
 		  <i class="fas fa-play mr-2"></i>Mulai Simulasi
 		</button>
 	  </div>
@@ -91,7 +91,7 @@
 </div>
 
 <style>
-/* ... (Semua <style> Anda tetap sama) ... */
+/* ... (CSS LENGKAP) ... */
 	.bg-pattern {
 		position: fixed;
 		top: 0;
@@ -328,123 +328,6 @@
 	#loader {
 		background: rgba(50, 102, 152, 0.1);
 	}
-	h2.inactive {
-	  color: #cccccc;
-	}
-	h2.active {
-	  color: #0d0d0d;
-	  border-bottom: 2px solid #5fbae9;
-	}
-	input[type=text] {
-	  border: none;
-	  color: #0d0d0d;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-	  border-radius:0px;
-	  border-bottom:2px solid #eee;
-	}
-	input[type=password] {
-	  border: none;
-	  color: #0d0d0d;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-	  border-radius:0px;
-	  border-bottom:2px solid #eee;
-	}
-	.fadeInDown {
-	  -webkit-animation-name: fadeInDown;
-	  animation-name: fadeInDown;
-	  -webkit-animation-duration: 1s;
-	  animation-duration: 1s;
-	  -webkit-animation-fill-mode: both;
-	  animation-fill-mode: both;
-	}
-	@keyframes floating {
-		0%, 100% { transform: translateY(0px); }
-		50% { transform: translateY(-10px); }
-	}
-	.header-icon .icon-circle {
-		animation: floating 3s ease-in-out infinite;
-	}
-	@-webkit-keyframes fadeInDown {
-	  0% {
-		opacity: 0;
-		-webkit-transform: translate3d(0, -100%, 0);
-		transform: translate3d(0, -100%, 0);
-	  }
-	  100% {
-		opacity: 1;
-		-webkit-transform: none;
-		transform: none;
-	  }
-	}
-	@keyframes fadeInDown {
-	  0% {
-		opacity: 0;
-		-webkit-transform: translate3d(0, -100%, 0);
-		transform: translate3d(0, -100%, 0);
-	  }
-	  100% {
-		opacity: 1;
-		-webkit-transform: none;
-		transform: none;
-	  }
-	}
-	@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-	@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-	@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-	.fadeIn {
-	  opacity:0;
-	  -webkit-animation:fadeIn ease-in 1;
-	  -moz-animation:fadeIn ease-in 1;
-	  animation:fadeIn ease-in 1;
-
-	  -webkit-animation-fill-mode:forwards;
-	  -moz-animation-fill-mode:forwards;
-	  animation-fill-mode:forwards;
-
-	  -webkit-animation-duration:1s;
-	  -moz-animation-duration:1s;
-	  animation-duration:1s;
-	}
-	.fadeIn.first {
-	  -webkit-animation-delay: 0.4s;
-	  -moz-animation-delay: 0.4s;
-	  animation-delay: 0.4s;
-	}
-	.fadeIn.second {
-	  -webkit-animation-delay: 0.6s;
-	  -moz-animation-delay: 0.6s;
-	  animation-delay: 0.6s;
-	}
-	.fadeIn.third {
-	  -webkit-animation-delay: 0.8s;
-	  -moz-animation-delay: 0.8s;
-	  animation-delay: 0.8s;
-	}
-	.fadeIn.fourth {
-	  -webkit-animation-delay: 1s;
-	  -moz-animation-delay: 1s;
-	  animation-delay: 1s;
-	}
-	.underlineHover:after {
-	  display: block;
-	  left: 0;
-	  bottom: -10px;
-	  width: 0;
-	  height: 2px;
-	  background-color: #56baed;
-	  content: "";
-	  transition: width 0.2s;
-	}
-	.underlineHover:hover {
-	  color: #0d0d0d;
-	}
-	.underlineHover:hover:after{
-	  width: 100%;
-	}
 	.error-input {
 		border-color: #dc3545 !important;
 		box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
@@ -469,13 +352,20 @@
 			top: 130px !important;
 		}
 	}
+	@keyframes floating {
+		0%, 100% { transform: translateY(0px); }
+		50% { transform: translateY(-10px); }
+	}
+	.header-icon .icon-circle {
+		animation: floating 3s ease-in-out infinite;
+	}
 </style>
 
 <script type="text/javascript" src="https://pusmendik.kemdikbud.go.id/tka/_assets/js/jquery/jquery.min.js"></script>
 
 <script>
 	// ⬇️ GANTI DENGAN URL APPS SCRIPT BARU ANDA DARI LANGKAH 2 ⬇️
-	var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwXpq1gt4fMHMnNAXnRpUQd2N3f1ZBASQ78zC08GqYUVwgbw_U0Voo9SUwVZXa3DGl0EQ/exec";
+	var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxp6l5b2K4rhTaRuIF52pshXm5D53OocZBhEj5Wzde78sOOHMtOu1uWrQrI6M3v-QOVhA/exec";
 
 	// Fungsi untuk mengubah daftar mata pelajaran berdasarkan jenjang
 	function loadMapelByJenjang(jenjang) {
